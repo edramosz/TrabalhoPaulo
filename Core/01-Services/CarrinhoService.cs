@@ -1,5 +1,8 @@
-﻿using Core._02_Repository;
+﻿using Core._01_Services.Interfaces;
+using Core._02_Repository;
+using Core._02_Repository.Interfaces;
 using Core._03_Entidades;
+using Core._03_Entidades.DTOs.Carrinho;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,21 +11,23 @@ using System.Threading.Tasks;
 
 namespace Core._01_Services
 {
-    public class CarrinhoService
+    public class CarrinhoService : ICarrinhoService
     {
-        public CarrinhoRepository repository { get; set; }
+        public ICarrinhoRepository repository { get; set; }
+        public IJogoRepository Jogo_repository { get; set; }
         public CarrinhoService(string _config)
         {
             repository = new CarrinhoRepository(_config);
+            Jogo_repository = new JogoRepository(_config);
         }
-        public void AdicionarItemCarrinho(Carrinho carrinho)
+        public void Adicionar(Carrinho carrinho)
         {
-            repository.AdicionarItemCarrinho(carrinho);
+            repository.Adicionar(carrinho);
         }
 
         public void Remover(int id)
         {
-            repository.RemoverCarrinho(id);
+            repository.Remover(id);
         }
 
         public List<Carrinho> Listar()
@@ -36,11 +41,23 @@ namespace Core._01_Services
         }
         public Carrinho BuscarCarrinhoPorId(int id)
         {
-            return repository.BuscarCarrinhoPorId(id);
+            return repository.BuscarPorId(id);
         }
         public void Editar(Carrinho editPessoa)
         {
-            repository.EditarCarrinho(editPessoa);
+            repository.Editar(editPessoa);
+        }
+
+        public double CalcularCarrinho(int usuarioId)
+        {
+            double ValorTotal = 0;
+            List<Carrinho> carrinho = repository.CalcularCarrinho(usuarioId);
+            foreach (Carrinho c in carrinho)
+            {
+                Jogo j = Jogo_repository.BuscarJogoPorId(c.JogoId);
+                ValorTotal = ValorTotal + j.Preco;
+            }
+            return ValorTotal;
         }
     }
 }

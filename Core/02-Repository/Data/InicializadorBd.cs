@@ -26,16 +26,6 @@ namespace Core._02_Repository.Data
                  Genero TEXT NOT NULL
                 );";
 
-                commandoSQL = @"   
-                 CREATE TABLE IF NOT EXISTS JogoFisico(
-                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                 Nome TEXT NOT NULL,
-                 Preco REAL NOT NULL,
-                 Descricao TEXT NOT NULL,
-                 Genero TEXT NOT NULL,
-                 Estoque INTEGER NOT NULL
-                );";
-
                 commandoSQL += @"   
                  CREATE TABLE IF NOT EXISTS Usuarios(
                  Id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -74,6 +64,13 @@ namespace Core._02_Repository.Data
                  Data DATE NOT NULL,
                  Parcelamento INTEGER NOT NULL,
                  MetodoPagamento TEXT NOT NULL
+                 );";
+
+                commandoSQL += @"
+                CREATE TABLE IF NOT EXISTS Bibliotecas(
+                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                 JogoId INTEGER NOT NULL,
+                 UsuarioId INTEGER NOT NULL
                  );";
 
                 connection.Execute(commandoSQL);

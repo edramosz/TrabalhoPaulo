@@ -1,4 +1,6 @@
-﻿using Core._02_Repository;
+﻿using Core._01_Services.Interfaces;
+using Core._02_Repository;
+using Core._02_Repository.Interfaces;
 using Core._03_Entidades;
 using System;
 using System.Collections.Generic;
@@ -8,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace Core._01_Services
 {
-    public class VendaService
+    public class VendaService : IVendaService
     {
-        public VendaRepository repository { get; set; }
+        public IVendaRepository repository { get; set; }
         public VendaService(string _config)
         {
             repository = new VendaRepository(_config);
@@ -39,4 +41,4 @@ namespace Core._01_Services
         }
     }
 }
-}
+

@@ -1,4 +1,6 @@
-﻿using Core._02_Repository;
+﻿using Core._01_Services.Interfaces;
+using Core._02_Repository;
+using Core._02_Repository.Interfaces;
 using Core._03_Entidades;
 using System;
 using System.Collections.Generic;
@@ -8,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace Core._01_Services
 {
-    public class JogoService
+    public class JogoService : IJogoService
     {
-        public JogoRepository repository { get; set; }
+        public IJogoRepository repository { get; set; }
         public JogoService(string _config)
         {
             repository = new JogoRepository(_config);

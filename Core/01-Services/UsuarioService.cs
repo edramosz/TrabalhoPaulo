@@ -1,4 +1,6 @@
-﻿using Core._02_Repository;
+﻿using Core._01_Services.Interfaces;
+using Core._02_Repository;
+using Core._02_Repository.Interfaces;
 using Core._03_Entidades;
 using System;
 using System.Collections.Generic;
@@ -8,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace Core._01_Services
 {
-    public class UsuarioService
+    public class UsuarioService : IUsuarioService
     {
-        public UsuarioRepository repository { get; set; }
+        public IUsuarioRepository repository { get; set; }
         public UsuarioService(string _config)
         {
             repository = new UsuarioRepository(_config);
@@ -39,4 +41,4 @@ namespace Core._01_Services
         }
     }
 }
-}
+

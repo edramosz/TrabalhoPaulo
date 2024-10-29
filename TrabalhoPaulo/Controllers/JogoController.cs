@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Core._01_Services;
+using Core._01_Services.Interfaces;
+using Core._03_Entidades;
 
 namespace API.Controllers
 {
@@ -8,7 +10,7 @@ namespace API.Controllers
     [Route("[controller]")]
     public class JogoController : ControllerBase
     {
-        private JogoService _service;
+        private IJogoService _service;
         public readonly string _connectionString;
         private readonly IMapper _mapper;
 
@@ -21,10 +23,9 @@ namespace API.Controllers
 
         [HttpPost("Adicionar-Jogo")]
 
-        public void AdicionarJogo(CreateJogoDTO t)
+        public void AdicionarJogo(Jogo j)
         {
-            Jogo jogo = _mapper.Map<Jogo>(t);
-            _service.Adicionar(jogo);
+            _service.Adicionar(j);
         }
         [HttpGet("Listar-Jogo")]
 
@@ -42,9 +43,9 @@ namespace API.Controllers
 
         [HttpPut("Editar-Jogo")]
 
-        public void EditarJogo(int id, Jogo Jogo)
+        public void EditarJogo(Jogo Jogo)
         {
-            _service.Editar(id, Jogo);
+            _service.Editar(Jogo);
         }
 
         [HttpGet("Buscar-Jogo-por-Id")]
@@ -55,4 +56,4 @@ namespace API.Controllers
         }
     }
 }
-}
+
