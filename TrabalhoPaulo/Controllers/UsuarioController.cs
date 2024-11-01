@@ -12,13 +12,13 @@ namespace API.Controllers
     {
         private IUsuarioService _service;
         public readonly string _connectionString;
-        private readonly IMapper _mapper;
+        //private readonly IMapper _mapper;
 
-        public UsuarioController(IMapper mapper, IConfiguration config)
+        public UsuarioController(IConfiguration config)//,IMapper mapper)
         {
             string connectionString = config.GetConnectionString("DefaultConnection");
             _service = new UsuarioService(connectionString);
-            _mapper = mapper;
+            //_mapper = mapper;
         }
 
         [HttpPost("Adicionar-Usuario")]

@@ -13,13 +13,13 @@ namespace API.Controllers
     {
         private IEnderecoService _service;
         public readonly string _connectionString;
-        private readonly IMapper _mapper;
+        //private readonly IMapper _mapper;
 
-        public EnderecoController(IMapper mapper, IConfiguration config)
+        public EnderecoController(IConfiguration config)//,IMapper mapper)
         {
             string connectionString = config.GetConnectionString("DefaultConnection");
             _service = new EnderecoService(connectionString);
-            _mapper = mapper;
+            //_mapper = mapper;
         }
 
         [HttpPost("Adicionar-Endereco")]

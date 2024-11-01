@@ -12,13 +12,13 @@ namespace API.Controllers
     {
         private IJogoService _service;
         public readonly string _connectionString;
-        private readonly IMapper _mapper;
+        //private readonly IMapper _mapper;
 
-        public JogoController(IMapper mapper, IConfiguration config)
+        public JogoController( IConfiguration config)//,IMapper mapper,)
         {
             string connectionString = config.GetConnectionString("DefaultConnection");
             _service = new JogoService(connectionString);
-            _mapper = mapper;
+            //_mapper = mapper;
         }
 
         [HttpPost("Adicionar-Jogo")]

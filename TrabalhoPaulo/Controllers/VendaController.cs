@@ -12,13 +12,13 @@ namespace API.Controllers
     {
         private IVendaService _service;
         public readonly string _connectionString;
-        private readonly IMapper _mapper;
+        //private readonly IMapper _mapper;
 
-        public VendaController(IMapper mapper, IConfiguration config)
+        public VendaController(IConfiguration config)//,IMapper mapper)
         {
             string connectionString = config.GetConnectionString("DefaultConnection");
             _service = new VendaService(connectionString);
-            _mapper = mapper;
+            //_mapper = mapper;
         }
 
         [HttpPost("Adicionar-Venda")]
