@@ -12,13 +12,11 @@ namespace API.Controllers
     public class CarrinhoController : ControllerBase
     {
         private ICarrinhoService _service;
-        public readonly string _connectionString;
         //private readonly IMapper _mapper;
 
-        public CarrinhoController(IConfiguration config)//,IMapper mapper,)
+        public CarrinhoController(ICarrinhoService repos)//,IMapper mapper,)
         {
-            string connectionString = config.GetConnectionString("DefaultConnection");
-            _service = new CarrinhoService(connectionString);
+            _service = repos;
             //_mapper = mapper;
         }
 

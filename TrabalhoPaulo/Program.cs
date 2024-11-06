@@ -1,4 +1,8 @@
+using Core._01_Services.Interfaces;
+using Core._01_Services;
+using Core._02_Repository;
 using Core._02_Repository.Data;
+using Core._02_Repository.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +13,21 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 InicializadorBd.Inicializar();
+
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddScoped<IJogoRepository, JogoRepository>();
+builder.Services.AddScoped<IJogoService, JogoService>();
+builder.Services.AddScoped<ICarrinhoRepository, CarrinhoRepository>();
+builder.Services.AddScoped<ICarrinhoService, CarrinhoService>();
+builder.Services.AddScoped<IBibliotecaRepository, BibliotecaRepository>();
+builder.Services.AddScoped<IBibliotecaService, BibliotecaService>();
+builder.Services.AddScoped<ITransacaoRepository, TransacaoRepository>();
+builder.Services.AddScoped<ITransacaoService, TransacaoService>();
+builder.Services.AddScoped<IVendaRepository, VendaRepository>();
+builder.Services.AddScoped<IVendaService, VendaService>();
+builder.Services.AddScoped<IEnderecoRepository, EnderecoRepository>();
+builder.Services.AddScoped<IEnderecoService, EnderecoService>();
 
 var app = builder.Build();
 

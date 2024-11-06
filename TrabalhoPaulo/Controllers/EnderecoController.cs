@@ -12,13 +12,11 @@ namespace API.Controllers
     public class EnderecoController : ControllerBase
     {
         private IEnderecoService _service;
-        public readonly string _connectionString;
         //private readonly IMapper _mapper;
 
-        public EnderecoController(IConfiguration config)//,IMapper mapper)
+        public EnderecoController(IEnderecoService serv)//,IMapper mapper)
         {
-            string connectionString = config.GetConnectionString("DefaultConnection");
-            _service = new EnderecoService(connectionString);
+            _service = serv;
             //_mapper = mapper;
         }
 

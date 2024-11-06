@@ -13,9 +13,9 @@ namespace Core._01_Services
     public class JogoService : IJogoService
     {
         public IJogoRepository repository { get; set; }
-        public JogoService(string _config)
+        public JogoService(IJogoRepository repos)
         {
-            repository = new JogoRepository(_config);
+            repository = repos;
         }
         public void Adicionar(Jogo Jogo)
         {

@@ -11,13 +11,11 @@ namespace API.Controllers
     public class TransacaoController : ControllerBase
     {
         private ITransacaoService _service;
-        public readonly string _connectionString;
         //private readonly IMapper _mapper;
 
-        public TransacaoController(IConfiguration config) //,IMapper mapper)
+        public TransacaoController(ITransacaoService serv) //,IMapper mapper)
         {
-            string connectionString = config.GetConnectionString("DefaultConnection");
-            _service = new TransacaoService(connectionString);
+            _service = serv;
             //_mapper = mapper;
         }
 

@@ -11,13 +11,11 @@ namespace API.Controllers
     public class UsuarioController : ControllerBase
     {
         private IUsuarioService _service;
-        public readonly string _connectionString;
         //private readonly IMapper _mapper;
 
-        public UsuarioController(IConfiguration config)//,IMapper mapper)
+        public UsuarioController(IUsuarioService serv)//,IMapper mapper)
         {
-            string connectionString = config.GetConnectionString("DefaultConnection");
-            _service = new UsuarioService(connectionString);
+            _service = serv;
             //_mapper = mapper;
         }
 

@@ -11,13 +11,11 @@ namespace API.Controllers
     public class JogoController : ControllerBase
     {
         private IJogoService _service;
-        public readonly string _connectionString;
         //private readonly IMapper _mapper;
 
-        public JogoController( IConfiguration config)//,IMapper mapper,)
+        public JogoController(IJogoService serv)//,IMapper mapper,)
         {
-            string connectionString = config.GetConnectionString("DefaultConnection");
-            _service = new JogoService(connectionString);
+            _service = serv;
             //_mapper = mapper;
         }
 

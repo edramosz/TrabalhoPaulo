@@ -13,9 +13,9 @@ namespace Core._01_Services
     public class TransacaoService : ITransacaoService
     {
         public ITransacaoRepository repository { get; set; }
-        public TransacaoService(string _config)
+        public TransacaoService(ITransacaoRepository repos)
         {
-            repository = new TransacaoRepository(_config);
+            repository = repos;
         }
         public void Adicionar(Transacao Transacao)
         {

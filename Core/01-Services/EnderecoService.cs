@@ -13,9 +13,9 @@ namespace Core._01_Services
     public class EnderecoService : IEnderecoService
     {
         public IEnderecoRepository repository { get; set; }
-        public EnderecoService(string _config)
+        public EnderecoService(IEnderecoRepository repos)
         {
-            repository = new EnderecoRepository(_config);
+            repository = repos;
         }
         public void Adicionar(Endereco Endereco)
         {

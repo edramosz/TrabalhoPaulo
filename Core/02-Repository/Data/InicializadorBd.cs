@@ -20,10 +20,12 @@ namespace Core._02_Repository.Data
                 string commandoSQL = @"   
                  CREATE TABLE IF NOT EXISTS Jogos(
                  Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                 Tipo INTEGER NOT NULL,
                  Nome TEXT NOT NULL,
                  Preco REAL NOT NULL,
                  Descricao TEXT NOT NULL,
-                 Genero TEXT NOT NULL
+                 Genero TEXT NOT NULL,
+                 Estoque INTEGER 
                 );";
 
                 commandoSQL += @"   
@@ -53,7 +55,7 @@ namespace Core._02_Repository.Data
                 commandoSQL += @"   
                  CREATE TABLE IF NOT EXISTS Vendas(
                  Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                 EnderecoId INTEGER NOT NULL,
+                 IdEndereco INTEGER NOT NULL,
                  ValorTotal REAL NOT NULL
                  );";
 

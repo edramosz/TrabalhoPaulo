@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dapper.Contrib.Extensions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace Core._03_Entidades
 {
-    public class Transacao
+ [Table("Transacoes")]
+        public class Transacao
     {
         public int Id { get; set; }
         public int CompraId { get; set; }

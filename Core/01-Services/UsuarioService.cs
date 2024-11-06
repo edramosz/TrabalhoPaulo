@@ -13,9 +13,9 @@ namespace Core._01_Services
     public class UsuarioService : IUsuarioService
     {
         public IUsuarioRepository repository { get; set; }
-        public UsuarioService(string _config)
+        public UsuarioService(IUsuarioRepository repos)
         {
-            repository = new UsuarioRepository(_config);
+            repository = repos;
         }
         public void Adicionar(Usuario Usuario)
         {

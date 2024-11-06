@@ -11,13 +11,11 @@ namespace API.Controllers
     public class VendaController : ControllerBase
     {
         private IVendaService _service;
-        public readonly string _connectionString;
         //private readonly IMapper _mapper;
 
-        public VendaController(IConfiguration config)//,IMapper mapper)
+        public VendaController(IVendaService serv)//,IMapper mapper)
         {
-            string connectionString = config.GetConnectionString("DefaultConnection");
-            _service = new VendaService(connectionString);
+            _service = serv;
             //_mapper = mapper;
         }
 

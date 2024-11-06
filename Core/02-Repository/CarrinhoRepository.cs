@@ -4,6 +4,7 @@ using Core._03_Entidades;
 using Core._03_Entidades.DTOs.Carrinho;
 using Dapper;
 using Dapper.Contrib.Extensions;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -18,11 +19,11 @@ namespace Core._02_Repository
         private readonly string ConnectionString;
         private readonly IJogoRepository _repositoryJogo;
         private readonly IUsuarioRepository _repositoryUsuario;
-        public CarrinhoRepository(string connectioString)
+        public CarrinhoRepository(IConfiguration config, IJogoRepository JogoRepos, IUsuarioRepository UserRepos)
         {
-            ConnectionString = connectioString;
-            _repositoryJogo = new JogoRepository(connectioString);
-            _repositoryUsuario = new UsuarioRepository(connectioString);
+            ConnectionString = config.GetConnectionString("DefaultConnection");
+            _repositoryJogo = JogoRepos;
+            _repositoryUsuario = UserRepos;
         }
         public void Adicionar(Carrinho carrinho)
         {

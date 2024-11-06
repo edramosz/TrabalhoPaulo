@@ -15,10 +15,10 @@ namespace Core._01_Services
     {
         public ICarrinhoRepository repository { get; set; }
         public IJogoRepository Jogo_repository { get; set; }
-        public CarrinhoService(string _config)
+        public CarrinhoService(ICarrinhoRepository repos, IJogoRepository jogo_repository)
         {
-            repository = new CarrinhoRepository(_config);
-            Jogo_repository = new JogoRepository(_config);
+            repository = repos;
+            Jogo_repository = jogo_repository;
         }
         public void Adicionar(Carrinho carrinho)
         {

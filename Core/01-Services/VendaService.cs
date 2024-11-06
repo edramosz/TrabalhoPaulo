@@ -13,9 +13,9 @@ namespace Core._01_Services
     public class VendaService : IVendaService
     {
         public IVendaRepository repository { get; set; }
-        public VendaService(string _config)
+        public VendaService(IVendaRepository repos)
         {
-            repository = new VendaRepository(_config);
+            repository = repos;
         }
         public void Adicionar(Venda Venda)
         {
