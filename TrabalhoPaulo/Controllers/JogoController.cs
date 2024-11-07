@@ -19,6 +19,12 @@ namespace API.Controllers
             //_mapper = mapper;
         }
 
+        
+        /// <summary>
+        /// Endpoint parra cadastrar um jogo
+        /// </summary>
+        /// <param name="j"></param>
+
         [HttpPost("Adicionar-Jogo")]
 
         public void AdicionarJogo(Jogo j)
