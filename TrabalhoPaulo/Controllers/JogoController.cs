@@ -21,42 +21,109 @@ namespace API.Controllers
 
         
         /// <summary>
-        /// Endpoint parra cadastrar um jogo
+        /// Endpoint para Cadastrar um Jogo
         /// </summary>
-        /// <param name="j"></param>
+        /// <param name="jogo"></param>
 
         [HttpPost("Adicionar-Jogo")]
 
-        public void AdicionarJogo(Jogo j)
+        public IActionResult AdicionarJogo(Jogo jogo)
         {
-            _service.Adicionar(j);
+            try
+            {
+                _service.Adicionar(jogo);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest($"Ocorreu um erro ao adicionar um Jogo, " +
+                    $"o erro foi \n {erro.Message}");
+                throw;
+            }
+            
         }
+
+        /// <summary>
+        /// Endpoint para Listar os Jogos
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("Listar-Jogo")]
 
         public List<Jogo> ListarJogo()
         {
-            return _service.Listar();
+            try
+            {
+                return _service.Listar();
+            }
+            catch (Exception erro)
+            {
+                throw new Exception($"Ocorreu um erro ao Listar os Jogos, " +
+                    $"o erro foi \n {erro.Message}"); 
+            }
+            
         }
 
+        /// <summary>
+        /// Endpoint para Remover um Jogo
+        /// </summary>
+        /// <param name="id"></param>
         [HttpDelete("Remover-Jogo")]
 
-        public void DeletarJogo(int id)
+        public IActionResult DeletarJogo(int id)
         {
-            _service.Remover(id);
+            try
+            {
+                _service.Remover(id);
+                return Ok();    
+            }
+            catch (Exception erro)
+            {
+                return BadRequest($"Ocorreu um erro ao Remover um Jogo, " +
+                   $"o erro foi \n {erro.Message}"); 
+            }
+            
         }
 
+        /// <summary>
+        /// Endpoint para Editar um Jogo
+        /// </summary>
+        /// <param name="Jogo"></param>
         [HttpPut("Editar-Jogo")]
 
-        public void EditarJogo(Jogo Jogo)
+        public IActionResult EditarJogo(Jogo Jogo)
         {
-            _service.Editar(Jogo);
+            try
+            {
+                _service.Editar(Jogo);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest($"Ocorreu um erro ao Editar um Jogo, " +
+                  $"o erro foi \n {erro.Message}"); 
+            }
+            
         }
 
+        /// <summary>
+        /// Endpoint para Buscar um Jogo por Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("Buscar-Jogo-por-Id")]
 
         public Jogo BuscarPorId(int id)
         {
-            return _service.BuscarJogoPorId(id);
+            try
+            {
+                return _service.BuscarJogoPorId(id);
+            }
+            catch (Exception erro)
+            {
+                throw new Exception($"Ocorreu um erro ao Buscar um Jogo por Id, " +
+                  $"o erro foi \n {erro.Message}");
+            }
+            
         }
     }
 }
