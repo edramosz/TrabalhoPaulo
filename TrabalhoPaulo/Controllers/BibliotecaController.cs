@@ -11,29 +11,28 @@ namespace API.Controllers
     [Route("[controller]")]
     public class BibliotecaController : ControllerBase
     {
-        //private IBibliotecaService _service;
-        //public readonly string _connectionString;
+        private IBibliotecaService _service;
+        public readonly string _connectionString;
         //private readonly IMapper _mapper;
 
-        //public BibliotecaController(IMapper mapper, IConfiguration config)
-        //{
-        //    string connectionString = config.GetConnectionString("DefaultConnection");
-        //    _service = new BibliotecaService(connectionString);
-        //    _mapper = mapper;
-        //}
+        public BibliotecaController(IMapper mapper, IBibliotecaService serv)
+        {
+            _service = serv;
+            //_mapper = mapper;
+        }
 
-        //[HttpPost("Adicionar-Biblioteca")]
+        [HttpPost("Adicionar-Biblioteca")]
 
-        //public void AdicionarBiblioteca(Biblioteca j)
-        //{
-        //    _service.Adicionar(j);
-        //}
-        //[HttpGet("Listar-Biblioteca")]
+        public void AdicionarBiblioteca(Biblioteca j)
+        {
+            _service.Adicionar(j);
+        }
+        [HttpGet("Listar-Biblioteca")]
 
-        //public List<Biblioteca> ListarBiblioteca()
-        //{
-        //    return _service.Listar();
-        //}
+        public List<Biblioteca> ListarBiblioteca()
+        {
+            return _service.Listar();
+        }
 
         //[HttpDelete("Remover-Biblioteca")]
 
@@ -42,18 +41,11 @@ namespace API.Controllers
         //    _service.Remover(id);
         //}
 
-        //[HttpPut("Editar-Biblioteca")]
+        [HttpGet("Buscar-Biblioteca-por-Id")]
 
-        //public void EditarBiblioteca(Biblioteca Biblioteca)
-        //{
-        //    _service.Editar(Biblioteca);
-        //}
-
-        //[HttpGet("Buscar-Biblioteca-por-Id")]
-
-        //public Biblioteca BuscarPorId(int id)
-        //{
-        //    return _service.BuscarBibliotecaPorId(id);
-        //}
+        public Biblioteca BuscarPorId(int id)
+        {
+            return _service.BuscarBibliotecaPorId(id);
+        }
     }
 }

@@ -25,17 +25,13 @@ namespace Core._02_Repository
             using var connection = new SQLiteConnection(ConnectionString);
             connection.Insert<Biblioteca>(biblioteca);
         }
-        public void Remover(int id)
-        {
-            using var connection = new SQLiteConnection(ConnectionString);
-            Biblioteca novoProduto = BuscarBibliotecaPorId(id);
-            connection.Delete<Biblioteca>(novoProduto);
-        }
-        public void Editar(Biblioteca biblioteca)
-        {
-            using var connection = new SQLiteConnection(ConnectionString);
-            connection.Update<Biblioteca>(biblioteca);
-        }
+        //public void Remover(int id)
+        //{
+        //    using var connection = new SQLiteConnection(ConnectionString);
+        //    Biblioteca novoProduto = BuscarBibliotecaPorId(id);
+        //    connection.Delete<Biblioteca>(novoProduto);
+        //}
+        
         public List<Biblioteca> Listar()
         {
             using var connection = new SQLiteConnection(ConnectionString);
@@ -47,5 +43,4 @@ namespace Core._02_Repository
             return connection.Get<Biblioteca>(id);
         }
     }
-}
 }

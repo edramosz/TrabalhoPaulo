@@ -20,12 +20,20 @@ namespace API.Controllers
             //_mapper = mapper;
         }
 
+        /// <summary>
+        /// Endpoint para adicionar um carrinho
+        /// </summary>
+        /// <param name="car"></param>
         [HttpPost("Adicionar-Carrinho")]
 
-        public void AdicionarCarrinho(Carrinho j)
+        public void AdicionarCarrinho(Carrinho car)
         {
-            _service.Adicionar(j);
+            _service.Adicionar(car);
         }
+        /// <summary>
+        /// Endpoint para listar carrinhos
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("Listar-Carrinho")]
 
         public List<Carrinho> ListarCarrinho()
@@ -33,6 +41,10 @@ namespace API.Controllers
             return _service.Listar();
         }
 
+        /// <summary>
+        /// Endpoint para Remover um Carrinho
+        /// </summary>
+        /// <param name="id"></param>
         [HttpDelete("Remover-Carrinho")]
 
         public void DeletarCarrinho(int id)
@@ -40,6 +52,10 @@ namespace API.Controllers
             _service.Remover(id);
         }
 
+        /// <summary>
+        /// Endpoint para Editar um Carrinho
+        /// </summary>
+        /// <param name="Carrinho"></param>
         [HttpPut("Editar-Carrinho")]
 
         public void EditarCarrinho(Carrinho Carrinho)
@@ -47,6 +63,11 @@ namespace API.Controllers
             _service.Editar(Carrinho);
         }
 
+        /// <summary>
+        /// Endpoint para listar um carrinho pelo id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("Buscar-Carrinho-por-Id")]
 
         public Carrinho BuscarPorId(int id)
