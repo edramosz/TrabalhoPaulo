@@ -27,6 +27,19 @@ builder.Services.AddSwaggerGen(options =>
 });
 InicializadorBd.Inicializar();
 
+// Configuração do CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("PermitirTudo",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
+
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IJogoRepository, JogoRepository>();
@@ -53,6 +66,9 @@ if (app.Environment.IsDevelopment())
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1");
     });
 }
+
+// Permite requisições de qualquer origem (CORS)
+app.UseCors("PermitirTudo");
 
 app.UseHttpsRedirection();
 
