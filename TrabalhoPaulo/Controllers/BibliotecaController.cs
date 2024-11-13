@@ -15,7 +15,7 @@ namespace API.Controllers
         public readonly string _connectionString;
         //private readonly IMapper _mapper;
 
-        public BibliotecaController(IMapper mapper, IBibliotecaService serv)
+        public BibliotecaController(IBibliotecaService serv)
         {
             _service = serv;
             //_mapper = mapper;
