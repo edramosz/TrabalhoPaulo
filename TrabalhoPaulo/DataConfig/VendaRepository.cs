@@ -13,38 +13,35 @@ namespace Core._02_Repository
 {
     public class VendaRepository : IVendaRepository
     {
-        public readonly string ConnectionString;
-
-        public VendaRepository(IConfiguration config)
+        private readonly ApplicationDbContext _context;
+        public VendaRepository(ApplicationDbContext context)
         {
-            ConnectionString = config.GetConnectionString("DefaultConnection");
+            _context = context;
         }
 
         public void Adicionar(Venda v)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
-            connection.Insert<Venda>(v);
+            _context.Vendas.Add(v);
+            _context.SaveChanges();
         }
         public void Remover(int id)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
-            Venda novoProduto = BuscarVendaPorId(id);
-            connection.Delete<Venda>(novoProduto);
+            Venda Venda = _context.Vendas.Find(id);
+            _context.Vendas.Remove(Venda);
+            _context.SaveChanges();
         }
         public void Editar(Venda v)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
-            connection.Update<Venda>(v);
+            _context.Vendas.Update(v);
+            _context.SaveChanges();
         }
         public List<Venda> Listar()
         {
-            using var connection = new SQLiteConnection(ConnectionString);
-            return connection.GetAll<Venda>().ToList();
+            return _context.Vendas.ToList();
         }
         public Venda BuscarVendaPorId(int id)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
-            return connection.Get<Venda>(id);
+            return _context.Vendas.Find(id);
         }
     }
 }

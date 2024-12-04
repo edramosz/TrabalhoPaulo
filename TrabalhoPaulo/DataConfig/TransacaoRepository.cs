@@ -1,50 +1,39 @@
 ﻿using Core._02_Repository.Interfaces;
 using Core._03_Entidades;
-using Dapper.Contrib.Extensions;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core._02_Repository
 {
     public class TransacaoRepository : ITransacaoRepository
     {
-        public readonly string ConnectionString;
-
-        public TransacaoRepository(IConfiguration config)
+        private readonly ApplicationDbContext _context;
+        public TransacaoRepository(ApplicationDbContext context)
         {
-            ConnectionString = config.GetConnectionString("DefaultConnection");
+            _context = context;
         }
 
         public void Adicionar(Transacao t)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
-            connection.Insert<Transacao>(t);
+            _context.Transacoes.Add(t);
+            _context.SaveChanges();
         }
         public void Remover(int id)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
-            Transacao novoProduto = BuscarTransacaoPorId(id);
-            connection.Delete<Transacao>(novoProduto);
+            Transacao t = _context.Transacoes.Find(id);
+            _context.Transacoes.Remove(t);
+            _context.SaveChanges();
         }
         public void Editar(Transacao t)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
-            connection.Update<Transacao>(t);
+            _context.Transacoes.Update(t);
+            _context.SaveChanges();
         }
         public List<Transacao> Listar()
         {
-            using var connection = new SQLiteConnection(ConnectionString);
-            return connection.GetAll<Transacao>().ToList();
+            return _context.Transacoes.ToList();
         }
         public Transacao BuscarTransacaoPorId(int id)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
-            return connection.Get<Transacao>(id);
+            return _context.Transacoes.Find(id);
         }
     }
 }

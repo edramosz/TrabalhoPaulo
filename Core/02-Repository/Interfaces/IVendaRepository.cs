@@ -1,12 +1,18 @@
 ﻿using Core._03_Entidades;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Core._02_Repository.Interfaces;
-
-public interface IVendaRepository
+namespace Core._02_Repository.Interfaces
 {
-    public void Adicionar(Venda v);
-    public void Remover(int id);
-    public void Editar(Venda v);
-    public List<Venda> Listar();
-    public Venda BuscarVendaPorId(int id);
+    public interface IVendaRepository
+    {
+        void Adicionar(Venda v);
+        void Remover(int id);
+        void Editar(Venda v);
+        List<Venda> Listar();
+        Venda BuscarVendaPorId(int id);
+    }
 }

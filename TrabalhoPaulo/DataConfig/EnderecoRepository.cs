@@ -13,38 +13,36 @@ namespace Core._02_Repository
 {
     public class EnderecoRepository : IEnderecoRepository
     {
-        public readonly string ConnectionString;
-
-        public EnderecoRepository(IConfiguration config)
+        private readonly ApplicationDbContext _context;
+        public EnderecoRepository(ApplicationDbContext context)
         {
-            ConnectionString = config.GetConnectionString("DefaultConnection");
+            _context = context;
         }
 
         public void Adicionar(Endereco e)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
-            connection.Insert<Endereco>(e);
+            _context.Enderecos.Add(e);
+            _context.SaveChanges();
         }
         public void Remover(int id)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
-            Endereco novoProduto = BuscarEnderecoPorId(id);
-            connection.Delete<Endereco>(novoProduto);
+            Endereco end = _context.Enderecos.Find(id);
+            _context.Enderecos.Remove(end);
+            _context.SaveChanges();
         }
         public void Editar(Endereco e)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
-            connection.Update<Endereco>(e);
+            _context.Enderecos.Update(e);
+            _context.SaveChanges();
         }
         public List<Endereco> Listar()
         {
-            using var connection = new SQLiteConnection(ConnectionString);
-            return connection.GetAll<Endereco>().ToList();
+            return _context.Enderecos.ToList();
         }
         public Endereco BuscarEnderecoPorId(int id)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
-            return connection.Get<Endereco>(id);
+            return _context.Enderecos.Find(id);
+            
         }
     }
 }

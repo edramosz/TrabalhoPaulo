@@ -1,12 +1,18 @@
 ﻿using Core._03_Entidades;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Core._02_Repository.Interfaces;
-
-public interface ITransacaoRepository
+namespace Core._02_Repository.Interfaces
 {
-    public void Adicionar(Transacao t);
-    public void Remover(int id);
-    public void Editar(Transacao t);
-    public List<Transacao> Listar();
-    public Transacao BuscarTransacaoPorId(int id);
+    public interface ITransacaoRepository
+    {
+        void Adicionar(Transacao t);
+        void Remover(int id);
+        void Editar(Transacao t);
+        List<Transacao> Listar();
+        Transacao BuscarTransacaoPorId(int id);
+    }
 }

@@ -1,50 +1,39 @@
 ﻿using Core._02_Repository.Interfaces;
 using Core._03_Entidades;
-using Dapper.Contrib.Extensions;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core._02_Repository
 {
     public class UsuarioRepository : IUsuarioRepository
     {
-        public readonly string ConnectionString;
-
-        public UsuarioRepository(IConfiguration config)
+        private readonly ApplicationDbContext _context;
+        public UsuarioRepository(ApplicationDbContext context)
         {
-            ConnectionString = config.GetConnectionString("DefaultConnection");
+            _context = context;
         }
 
         public void Adicionar(Usuario u)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
-            connection.Insert<Usuario>(u);
+            _context.Usuarios.Add(u);
+            _context.SaveChanges();
         }
         public void Remover(int id)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
-            Usuario novoProduto = BuscarUsuarioPorId(id);
-            connection.Delete<Usuario>(novoProduto);
+            Usuario Usuario = _context.Usuarios.Find(id);
+            _context.Usuarios.Remove(Usuario);
+            _context.SaveChanges();
         }
         public void Editar(Usuario u)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
-            connection.Update<Usuario>(u);
+            _context.Usuarios.Update(u);
+            _context.SaveChanges();
         }
         public List<Usuario> Listar()
         {
-            using var connection = new SQLiteConnection(ConnectionString);
-            return connection.GetAll<Usuario>().ToList();
+            return _context.Usuarios.ToList();
         }
         public Usuario BuscarUsuarioPorId(int id)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
-            return connection.Get<Usuario>(id);
+            return _context.Usuarios.Find(id);
         }
     }
 }

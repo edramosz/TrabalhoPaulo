@@ -1,16 +1,12 @@
-﻿using Core._03_Entidades;
-using Core._03_Entidades.DTOs.Carrinho;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Core._02_Repository.Interfaces;
-
-public interface ICarrinhoRepository
+namespace Core._02_Repository.Interfaces
 {
-    public void Adicionar(Carrinho carrinho);
-    public void Remover(int id);
-    public void Editar(Carrinho carrinho);
-    public List<Carrinho> Listar();
-    //public List<ReadCarrinhoDTO> ListarCarrinhoDoUsuario(int usuarioId);
-    public Carrinho BuscarPorId(int id);
-    //public List<Carrinho> CalcularCarrinho(int UsuarioId);
-
+    internal interface ICarrinhoRepository
+    {
+    }
 }
