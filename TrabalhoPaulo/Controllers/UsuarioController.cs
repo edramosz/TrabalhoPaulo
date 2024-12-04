@@ -3,6 +3,7 @@ using Core._01_Services.Interfaces;
 using Core._01_Services;
 using Core._03_Entidades;
 using Microsoft.AspNetCore.Mvc;
+using Core._03_Entidades.DTOs;
 
 namespace API.Controllers
 {
@@ -51,6 +52,13 @@ namespace API.Controllers
         public Usuario BuscarPorId(int id)
         {
             return _service.BuscarUsuarioPorId(id);
+        }
+
+        [HttpPost("fazer-login")]
+        public Usuario FazerLogin(UsuarioLoginDTO usuarioLogin)
+        {
+            Usuario usuario = _service.FazerLogin(usuarioLogin);
+            return usuario;
         }
     }
 }

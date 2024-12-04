@@ -11,41 +11,40 @@ using System.Threading.Tasks;
 
 namespace Core._02_Repository
 {
-    public class JogoRepository : IJogoRepository
+    public class EnderecoRepository : IEnderecoRepository
     {
         public readonly string ConnectionString;
 
-        public JogoRepository(IConfiguration config)
+        public EnderecoRepository(IConfiguration config)
         {
-            ConnectionString = config.GetConnectionString("DefaultConnection"); ;
+            ConnectionString = config.GetConnectionString("DefaultConnection");
         }
 
-        public void Adicionar(Jogo j)
+        public void Adicionar(Endereco e)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            connection.Insert<Jogo>(j);
+            connection.Insert<Endereco>(e);
         }
         public void Remover(int id)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            Jogo novoProduto = BuscarJogoPorId(id);
-            connection.Delete<Jogo>(novoProduto);
+            Endereco novoProduto = BuscarEnderecoPorId(id);
+            connection.Delete<Endereco>(novoProduto);
         }
-        public void Editar(Jogo j)
+        public void Editar(Endereco e)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            connection.Update<Jogo>(j);
+            connection.Update<Endereco>(e);
         }
-        public List<Jogo> Listar()
+        public List<Endereco> Listar()
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            return connection.GetAll<Jogo>().ToList();
+            return connection.GetAll<Endereco>().ToList();
         }
-        public Jogo BuscarJogoPorId(int id)
+        public Endereco BuscarEnderecoPorId(int id)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            return connection.Get<Jogo>(id);
+            return connection.Get<Endereco>(id);
         }
-
     }
 }

@@ -11,41 +11,40 @@ using System.Threading.Tasks;
 
 namespace Core._02_Repository
 {
-    public class JogoRepository : IJogoRepository
+    public class VendaRepository : IVendaRepository
     {
         public readonly string ConnectionString;
 
-        public JogoRepository(IConfiguration config)
+        public VendaRepository(IConfiguration config)
         {
-            ConnectionString = config.GetConnectionString("DefaultConnection"); ;
+            ConnectionString = config.GetConnectionString("DefaultConnection");
         }
 
-        public void Adicionar(Jogo j)
+        public void Adicionar(Venda v)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            connection.Insert<Jogo>(j);
+            connection.Insert<Venda>(v);
         }
         public void Remover(int id)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            Jogo novoProduto = BuscarJogoPorId(id);
-            connection.Delete<Jogo>(novoProduto);
+            Venda novoProduto = BuscarVendaPorId(id);
+            connection.Delete<Venda>(novoProduto);
         }
-        public void Editar(Jogo j)
+        public void Editar(Venda v)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            connection.Update<Jogo>(j);
+            connection.Update<Venda>(v);
         }
-        public List<Jogo> Listar()
+        public List<Venda> Listar()
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            return connection.GetAll<Jogo>().ToList();
+            return connection.GetAll<Venda>().ToList();
         }
-        public Jogo BuscarJogoPorId(int id)
+        public Venda BuscarVendaPorId(int id)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            return connection.Get<Jogo>(id);
+            return connection.Get<Venda>(id);
         }
-
     }
 }

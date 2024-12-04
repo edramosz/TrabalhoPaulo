@@ -11,41 +11,40 @@ using System.Threading.Tasks;
 
 namespace Core._02_Repository
 {
-    public class JogoRepository : IJogoRepository
+    public class UsuarioRepository : IUsuarioRepository
     {
         public readonly string ConnectionString;
 
-        public JogoRepository(IConfiguration config)
+        public UsuarioRepository(IConfiguration config)
         {
-            ConnectionString = config.GetConnectionString("DefaultConnection"); ;
+            ConnectionString = config.GetConnectionString("DefaultConnection");
         }
 
-        public void Adicionar(Jogo j)
+        public void Adicionar(Usuario u)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            connection.Insert<Jogo>(j);
+            connection.Insert<Usuario>(u);
         }
         public void Remover(int id)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            Jogo novoProduto = BuscarJogoPorId(id);
-            connection.Delete<Jogo>(novoProduto);
+            Usuario novoProduto = BuscarUsuarioPorId(id);
+            connection.Delete<Usuario>(novoProduto);
         }
-        public void Editar(Jogo j)
+        public void Editar(Usuario u)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            connection.Update<Jogo>(j);
+            connection.Update<Usuario>(u);
         }
-        public List<Jogo> Listar()
+        public List<Usuario> Listar()
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            return connection.GetAll<Jogo>().ToList();
+            return connection.GetAll<Usuario>().ToList();
         }
-        public Jogo BuscarJogoPorId(int id)
+        public Usuario BuscarUsuarioPorId(int id)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            return connection.Get<Jogo>(id);
+            return connection.Get<Usuario>(id);
         }
-
     }
 }

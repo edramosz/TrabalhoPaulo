@@ -4,6 +4,8 @@ using Core._02_Repository;
 using Core._02_Repository.Data;
 using Core._02_Repository.Interfaces;
 using Microsoft.OpenApi.Models;
+using Core;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,7 +27,10 @@ builder.Services.AddSwaggerGen(options =>
         Description = "Loja de Jogos criada por Edson"
     });
 });
-InicializadorBd.Inicializar();
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddDbContext<ApplicationDbContext>(variavel =>
+    variavel.UseLazyLoadingProxies().UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 // Configuração do CORS
 builder.Services.AddCors(options =>

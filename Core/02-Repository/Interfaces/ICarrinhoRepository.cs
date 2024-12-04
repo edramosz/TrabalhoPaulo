@@ -9,8 +9,8 @@ public interface ICarrinhoRepository
     public void Remover(int id);
     public void Editar(Carrinho carrinho);
     public List<Carrinho> Listar();
-    public List<ReadCarrinhoDTO> ListarCarrinhoDoUsuario(int usuarioId);
+    //public List<ReadCarrinhoDTO> ListarCarrinhoDoUsuario(int usuarioId);
     public Carrinho BuscarPorId(int id);
-    public List<Carrinho> CalcularCarrinho(int UsuarioId);
+    //public List<Carrinho> CalcularCarrinho(int UsuarioId);
 
 }
