@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 
 
-namespace Core._02_Repository
+namespace API.DataConfig
 {
     public class ApplicationDbContext : DbContext
     {

@@ -3,7 +3,7 @@ using Core._03_Entidades;
 using System.Data.SQLite;
 
 
-namespace Core._02_Repository
+namespace API.DataConfig
 {
     public class BibliotecaRepository : IBibliotecaRepository
     {
