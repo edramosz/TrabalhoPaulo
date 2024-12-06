@@ -1,9 +1,5 @@
 ﻿using Core._02_Repository.Interfaces;
 using Core._03_Entidades;
-using Core._03_Entidades.DTOs.Carrinho;
-using SQLitePCL;
-using System.Data.SQLite;
-
 
 namespace Core._02_Repository
 {

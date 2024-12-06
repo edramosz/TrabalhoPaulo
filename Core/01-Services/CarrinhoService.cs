@@ -35,10 +35,10 @@ namespace Core._01_Services
             return repository.Listar();
         }
 
-        public List<ReadCarrinhoDTO> ListarCarrinhoDoUsuario(int usuarioId)
-        {
-            return repository.ListarCarrinhoDoUsuario(usuarioId);
-        }
+        //public List<ReadCarrinhoDTO> ListarCarrinhoDoUsuario(int usuarioId)
+        //{
+        //    return repository.ListarCarrinhoDoUsuario(usuarioId);
+        //}
         public Carrinho BuscarCarrinhoPorId(int id)
         {
             return repository.BuscarPorId(id);
@@ -48,16 +48,16 @@ namespace Core._01_Services
             repository.Editar(editPessoa);
         }
 
-        public double CalcularCarrinho(int usuarioId)
-        {
-            double ValorTotal = 0;
-            List<Carrinho> carrinho = repository.CalcularCarrinho(usuarioId);
-            foreach (Carrinho c in carrinho)
-            {
-                Jogo j = Jogo_repository.BuscarJogoPorId(c.JogoId);
-                ValorTotal = ValorTotal + j.Preco;
-            }
-            return ValorTotal;
-        }
+        //public double CalcularCarrinho(int usuarioId)
+        //{
+        //    double ValorTotal = 0;
+        //    List<Carrinho> carrinho = repository.CalcularCarrinho(usuarioId);
+        //    foreach (Carrinho c in carrinho)
+        //    {
+        //        Jogo j = Jogo_repository.BuscarJogoPorId(c.JogoId);
+        //        ValorTotal = ValorTotal + j.Preco;
+        //    }
+        //    return ValorTotal;
+        //}
     }
 }

@@ -1,13 +1,5 @@
 ﻿using Core._02_Repository.Interfaces;
 using Core._03_Entidades;
-using Dapper.Contrib.Extensions;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core._02_Repository
 {
