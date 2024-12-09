@@ -1,6 +1,5 @@
 ﻿using Core._02_Repository.Interfaces;
 using Core._03_Entidades;
-using System.Data.SQLite;
 
 namespace API.DataConfig
 {

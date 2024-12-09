@@ -33,7 +33,7 @@ namespace Core._01_Services
         }
         public Jogo BuscarJogoPorId(int id)
         {
-            return repository.BuscarJogoPorId(id);
+            return repository.BuscarPorId(id);
         }
         public void Editar(Jogo editJogo)
         {

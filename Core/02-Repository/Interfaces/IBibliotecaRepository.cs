@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 
 namespace Core._02_Repository.Interfaces
 {
-    public interface IBibliotecaRepository
+    public interface IBibliotecaRepository : IBaseRepository<Biblioteca>
     {
-        void Adicionar(Biblioteca biblioteca);
-        List<Biblioteca> Listar();
-        Biblioteca BuscarBibliotecaPorId(int id);
     }
 }

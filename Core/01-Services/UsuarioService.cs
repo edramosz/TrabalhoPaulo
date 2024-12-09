@@ -34,7 +34,7 @@ namespace Core._01_Services
         }
         public Usuario BuscarUsuarioPorId(int id)
         {
-            return repository.BuscarUsuarioPorId(id);
+            return repository.BuscarPorId(id);
         }
         public void Editar(Usuario editUsuario)
         {

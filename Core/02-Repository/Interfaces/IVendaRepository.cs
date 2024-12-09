@@ -7,12 +7,7 @@ using System.Threading.Tasks;
 
 namespace Core._02_Repository.Interfaces
 {
-    public interface IVendaRepository
+    public interface IVendaRepository : IBaseRepository<Venda>
     {
-        void Adicionar(Venda v);
-        void Remover(int id);
-        void Editar(Venda v);
-        List<Venda> Listar();
-        Venda BuscarVendaPorId(int id);
     }
 }

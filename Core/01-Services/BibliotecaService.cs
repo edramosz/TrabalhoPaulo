@@ -32,7 +32,7 @@ namespace Core._01_Services
         }
         public Biblioteca BuscarBibliotecaPorId(int id)
         {
-            return repository.BuscarBibliotecaPorId(id);
+            return repository.BuscarPorId(id);
         }
     }
 }

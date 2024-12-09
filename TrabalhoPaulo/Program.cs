@@ -5,6 +5,7 @@ using Core._02_Repository.Interfaces;
 using Microsoft.OpenApi.Models;
 using Core;
 using Microsoft.EntityFrameworkCore;
+using API.DataConfig;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -33,7 +33,7 @@ namespace Core._01_Services
         }
         public Transacao BuscarTransacaoPorId(int id)
         {
-            return repository.BuscarTransacaoPorId(id);
+            return repository.BuscarPorId(id);
         }
         public void Editar(Transacao editTransacao)
         {

@@ -33,7 +33,7 @@ namespace Core._01_Services
         }
         public Endereco BuscarEnderecoPorId(int id)
         {
-            return repository.BuscarEnderecoPorId(id);
+            return repository.BuscarPorId(id);
         }
         public void Editar(Endereco editEndereco)
         {

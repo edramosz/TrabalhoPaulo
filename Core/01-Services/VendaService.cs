@@ -33,7 +33,7 @@ namespace Core._01_Services
         }
         public Venda BuscarVendaPorId(int id)
         {
-            return repository.BuscarVendaPorId(id);
+            return repository.BuscarPorId(id);
         }
         public void Editar(Venda editVenda)
         {
