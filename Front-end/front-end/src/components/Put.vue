@@ -1,5 +1,5 @@
 <template>
-    <form @submit="PostItem">
+    <form @submit="PutItem">
       <input type="text" id="Id" placeholder="Id" v-model="id" />
       <input type="text" id="Nome" placeholder="Nome" v-model="nome" />
       <input type="text" id="Tipo" placeholder="Tipo" v-model="tipo" />
@@ -32,7 +32,7 @@
     methods: {
       async PutItem(event) {
         event.preventDefault(); // Previne o comportamento de envio do formulário
-        // Agora você pode fazer a requisição POST
+        // Agora você pode fazer a requisição PUT
         const data = {
           id: this.id,
           tipo: this.tipo,
