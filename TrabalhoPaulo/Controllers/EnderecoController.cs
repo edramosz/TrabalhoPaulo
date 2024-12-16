@@ -20,18 +20,33 @@ namespace API.Controllers
             //_mapper = mapper;
         }
 
+        /// <summary>
+        /// Endpoint para Adicionar um Endereço
+        /// </summary>
+        /// <param name="e"></param>
+
         [HttpPost("Adicionar-Endereco")]
 
         public void AdicionarEndereco(Endereco e)
         {
             _service.Adicionar(e);
         }
+
+        /// <summary>
+        /// Endpoint para Listar os endereços
+        /// </summary>
+        /// 
         [HttpGet("Listar-Endereco")]
 
         public List<Endereco> ListarEndereco()
         {
             return _service.Listar();
         }
+
+        /// <summary>
+        /// Endpoint para remover um endereço
+        /// </summary>
+        /// <param name="id"></param>
 
         [HttpDelete("Remover-Endereco")]
 
@@ -40,12 +55,22 @@ namespace API.Controllers
             _service.Remover(id);
         }
 
+        /// <summary>
+        /// Endpoint para editar um endereço
+        /// </summary>
+        /// <param name="id"></param>
+
         [HttpPut("Editar-Endereco")]
 
         public void EditarEndereco(Endereco Endereco)
         {
             _service.Editar(Endereco);
         }
+
+        /// <summary>
+        /// Endpoint para Buscar um endereço por id
+        /// </summary>
+        /// <param name="id"></param>
 
         [HttpGet("Buscar-Endereco-por-Id")]
 

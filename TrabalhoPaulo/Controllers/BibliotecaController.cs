@@ -21,12 +21,22 @@ namespace API.Controllers
             //_mapper = mapper;
         }
 
+        /// <summary>
+        /// Endpoint para Adicionar uma biblioteca
+        /// </summary>
+        /// <param name="j"></param>
+
         [HttpPost("Adicionar-Biblioteca")]
 
         public void AdicionarBiblioteca(Biblioteca j)
         {
             _service.Adicionar(j);
         }
+
+        /// <summary>
+        /// Endpoint para Buscar as biliotecas
+        /// </summary>
+        /// 
         [HttpGet("Listar-Biblioteca")]
 
         public List<Biblioteca> ListarBiblioteca()
@@ -41,6 +51,11 @@ namespace API.Controllers
         //    _service.Remover(id);
         //}
 
+        /// <summary>
+        /// Endpoint para Buscar uma biblioteca por id
+        /// </summary>
+        /// <param name="id"></param>
+        /// 
         [HttpGet("Buscar-Biblioteca-por-Id")]
 
         public Biblioteca BuscarPorId(int id)

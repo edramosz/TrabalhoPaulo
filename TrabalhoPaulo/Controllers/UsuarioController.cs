@@ -20,18 +20,33 @@ namespace API.Controllers
             //_mapper = mapper;
         }
 
+        /// <summary>
+        /// Endpoint para Adicionar usuario
+        /// </summary>
+        /// <param name="u"></param>
+        /// 
         [HttpPost("Adicionar-Usuario")]
 
         public void AdicionarUsuario(Usuario u)
         {
             _service.Adicionar(u);
         }
+
+        /// <summary>
+        /// Endpoint para Listar Usuarios
+        /// </summary>
+
         [HttpGet("Listar-Usuario")]
 
         public List<Usuario> ListarUsuario()
         {
             return _service.Listar();
         }
+
+        /// <summary>
+        /// Endpoint para remover um usuario por id
+        /// </summary>
+        /// <param name="id"></param>
 
         [HttpDelete("Remover-Usuario")]
 
@@ -40,12 +55,22 @@ namespace API.Controllers
             _service.Remover(id);
         }
 
+        /// <summary>
+        /// Endpoint para editar um Usuario
+        /// </summary>
+        /// <param name="Usuario"></param>
+
         [HttpPut("Editar-Usuario")]
 
         public void EditarUsuario(Usuario Usuario)
         {
             _service.Editar(Usuario);
         }
+
+        /// <summary>
+        /// Endpoint para Buscar um usuario por id
+        /// </summary>
+        /// <param name="id"></param>
 
         [HttpGet("Buscar-Usuario-por-Id")]
 
@@ -54,6 +79,11 @@ namespace API.Controllers
             return _service.BuscarUsuarioPorId(id);
         }
 
+        /// <summary>
+        /// Endpoint para usuario fazer login
+        /// </summary>
+        /// <param name="usuarioLogin"></param>
+        /// 
         [HttpPost("fazer-login")]
         public Usuario FazerLogin(UsuarioLoginDTO usuarioLogin)
         {

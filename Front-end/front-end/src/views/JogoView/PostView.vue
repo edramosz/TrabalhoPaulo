@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Post from '@/components/Post.vue'
+import Post from '@/components/JogoCrud/Post.vue'
 export default{
   name: 'PostView',
   components:{

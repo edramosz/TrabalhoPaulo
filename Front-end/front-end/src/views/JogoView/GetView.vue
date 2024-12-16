@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Get from '@/components/Get.vue'
+import Get from '@/components/JogoCrud/Get.vue'
 export default{
   name: 'GetView',
   components:{

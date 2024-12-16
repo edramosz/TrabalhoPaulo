@@ -5,7 +5,7 @@
   </template>
   
   <script>
-  import Put from '@/components/Put.vue'
+  import Put from '@/components/JogoCrud/Put.vue'
   export default{
     name: 'PutView',
     components:{

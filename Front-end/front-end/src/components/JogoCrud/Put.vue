@@ -1,4 +1,6 @@
 <template>
+  <div>
+    <h1 class="page-title">Editar Jogos</h1>
     <form @submit="PutItem">
       <input type="text" id="Id" placeholder="Id" v-model="id" />
       <input type="text" id="Nome" placeholder="Nome" v-model="nome" />
@@ -14,6 +16,7 @@
       <input type="text" id="Estoque" placeholder="Estoque" v-model="estoque" />
       <button type="submit">Envie</button>
     </form>
+  </div>
   </template>
   
   <script>
@@ -63,4 +66,73 @@
     },
   };
   </script>
-  
+  <style scoped>
+  /* Define um estilo básico para o corpo da página */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Estilo para o título da página */
+.page-title {
+  color: #333;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Estilo para o formulário */
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Estilo para os campos de entrada */
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+  border-color: #fca130;
+  outline: none;
+}
+
+/* Estilo para o botão de envio */
+button {
+  padding: 10px;
+  background-color: #fca130;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #d5811a;
+}
+
+/* Adiciona um pequeno efeito de transição nos campos de entrada */
+input[type="text"]:hover {
+  border-color: #fca130;
+}
+
+  </style>

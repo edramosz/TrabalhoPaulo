@@ -1,4 +1,6 @@
 <template>
+  <div>
+  <h1 class="page-title">Adicionar Jogos</h1>
   <form @submit="PostItem">
     <input type="text" id="Nome" placeholder="Nome" v-model="nome" />
     <input type="text" id="Tipo" placeholder="Tipo" v-model="tipo" />
@@ -13,6 +15,7 @@
     <input type="text" id="Estoque" placeholder="Estoque" v-model="estoque" />
     <button type="submit">Envie</button>
   </form>
+</div>
 </template>
 
 <script>
@@ -61,3 +64,71 @@ export default {
   },
 };
 </script>
+<style scoped>
+/* Estilo global para o body para centralizar o conteúdo */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f4f4f9; /* Cor de fundo suave */
+}
+
+/* Estilo para o título da página */
+.page-title {
+  color: #333;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Estilo do formulário para adicionar jogos */
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Estilo para os campos de input */
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+  border-color: #49cc90; /* Borda azul ao focar no campo */
+  outline: none;
+}
+
+/* Estilo para o botão de envio */
+button {
+  padding: 10px;
+  background-color: #49cc90; /* Cor azul para o botão */
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #36a774; /* Cor mais escura ao passar o mouse */
+}
+
+/* Efeito de transição nos campos de entrada */
+input[type="text"]:hover {
+  border-color: #4a90e2;
+}
+
+</style>

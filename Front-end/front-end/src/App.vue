@@ -9,7 +9,7 @@
 <script>
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
-import Post from '@/components/Post.vue'
+import Post from '@/components/JogoCrud/Post.vue'
 export default{
   name: 'App',
   components:{
@@ -19,3 +19,10 @@ export default{
   }
 }
 </script>
+<style>
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+</style>
